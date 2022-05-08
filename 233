@@ -1,144 +1,44 @@
-#include"stdio.h"
-#include"string.h"
-#include"stdlib.h"
-struct student
+#include <stdio.h>
+structList
 {
-	int ID;
-	int Age;
-	char Name[100];
-	struct student*next; 
-}; 
-
-struct student*head=NULL;
-struct student*tall=NULL;
-
-void printstudent(struct student*cur)
-{
-	printf("学号:%d	年龄:%d		姓名:%s\n",cur->ID,cur->Age,cur->Name);
-}
-
-void list(struct student*head)
-{
-	while(head!=NULL)
-	{
-		printstudent(head);
-		head=head->next;
-	}
-}
-void add()
-{
-	struct student*node=(struct student*)malloc(sizeof(struct student));
-	printf("请输入学号:");
-	scanf("%d",&node->ID);
-	printf("请输入年龄:");
-	scanf("%d",&node->Age);
-	printf("请输入姓名:");
-	scanf("%s",node->Name);
-	node->next=NULL;
-	if(head==NULL)
-	{
-		head=node;
-		tall=node;
-	}
-	else
-	{
-		tall->next=node;
-		tall=node;
-	}
-	printf("添加成功\n");
-}
-void find()
-{
-	printf("请输入想要查询的学生学号:");
-	int id;
-	scanf("%d",&id);
-	struct student*cur=head;
-	int n=0;
-	while(cur!=NULL)
-	{
-		if(cur->ID==id)
-		{
-			printstudent(cur);
-			n=1;
-			break;
-		}
-		else
-		{
-			cur=cur->next;
-		}
-	}
-	if(n==0)
-	printf("没有这个学生\n");
-}
-void printfallstudent()
-{
-	if(head==NULL)
-	{
-		printf("没有学生\n");
-	}
-	else
-	list(head);
-}
-void deletestudent()
-{
-	printf("请输入想要删除的学生学号:");
-	int id;
-	scanf("%d",&id);
-	struct student*cur=head;
-	if(cur->ID==id)
-	{
-		head=head->next;
-		free(cur);
-		cur=NULL;
-		return;
-	}
-	struct student*pre=cur;//pre=s1
-	cur=cur->next;
-	while(cur!=NULL)
-	{
-		if(cur->ID==id)
-		{
-			struct student*next=cur->next;
-			pre->next=next;
-			free(cur);
-			cur=NULL;
-			printf("已删除\n");
-			return;
-		}
-		else
-		{
-			pre=cur;
-			cur=cur->next;
-		}
-	}
-	printf("该学生不存在，无法删除\n");
-	
-}
-
+int data；
+char xm[8];
+float cj;
+structList * next;
+}；
 int main()
 {
-	printf("欢迎使用学生管理系统:\n");
-	printf("按1添加学生\n");
-	printf("按2查课学生\n");
-	printf("按3打印所有学生\n");
-	printf("按4删除学生\n");
-	printf("按5退出\n"); 
-	
-	while(1)
-	{
-		char c;
-		scanf("%c",&c);
-		switch(c)
-		{
-			case '1':add();break;
-			case '2':find();break;
-			case '3':printfallstudent();break;
-			case '4':deletestudent();break;
-			case '5':exit(0);
-			default:break;
-			
-		}
-	}
-	
-	return 0;
+struct List head ,node1 ,node2,nodeS,node;
+struct List * phead,* pnode1 ,* pnode2,*pnode3,*pnode;
+int x,n=3;
+phead=&head;
+pnode1=&node1;
+pnode2=&node2;
+pnode3=&node3;
+printf("请输入三个学生的信息: (学号姓名成绩) \");
+scanf("%d%%f",&pnode1->data,&pnode1->xm,&pnode1->cj);
+scanf("%d%s%f",&pnode2->data,&pnode2->xm,&pnode2->cj);
+scanf("%d%s%f",&pnode3->data,&pnode3->xm,&pnode3->cj);
+pnode1->next=pnode2;
+pnode2->next=pnode3;
+pnode3->next=NULL;
+phead=pnode1;
+pnode=phead;
+print("学生信息为: \n");
+while(pnode !=NULL)
+{
+printf("%d't%s't%f[n' ',pnode->data,pnode->xm,pnode-cj);
+pnode =pnode->next;
+pnode=phead;
+}
+printf("In请输入你要删除的学号: \n");
+scanf("%d" ,&x);
+print("删除后的学号为: \n");
+while(pnode!=NULL)
+{
+if(x!=pnode->data)
+printf("%d(t%slt%fn",pnode->data,pnode->xm,pnode->cj);
+pnode =pnode->next;
+}
+return 0;
 }
